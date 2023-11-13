@@ -2,11 +2,12 @@ import java.util.Scanner
 
 class Archive(val name: String, val notes: MutableList <Note>) {
 
+    val scanner = Scanner(System.`in`)
     fun enterNote(note: Note, archive: Archive, list: MutableList<Archive>){
         println("Введите текст")
                 while (true) {
-            val noteText = Scanner(System.`in`).nextLine()
-            if (noteText.isNullOrEmpty()) {
+            val noteText = scanner.nextLine().trim()
+            if (noteText.isEmpty()) {
                 println("Ввод не должен быть пустым. Введите текст.")
             } else {
                 note.text = note.text + "\n$noteText"
@@ -22,7 +23,7 @@ class Archive(val name: String, val notes: MutableList <Note>) {
         println("0 - Назад")
         println("1 - Добавить текст")
         while (true) {
-            val inputValue = Scanner(System.`in`).nextLine()
+            val inputValue = scanner.nextLine()
             if (inputValue.toIntOrNull() == null) {
                 println("Некорректное значение. Необходимо ввести цифру")
             } else {
@@ -40,14 +41,14 @@ class Archive(val name: String, val notes: MutableList <Note>) {
     fun createNote(archive: Archive, list: MutableList<Archive>) {
         println("Введите название заметки:")
         while (true) {
-            val name = Scanner(System.`in`).nextLine()
-            if (name.isNullOrEmpty()) {
+            val name = scanner.nextLine().trim()
+            if (name.isEmpty()) {
                 println("Ввод не должен быть пустым. Введите текст.")
             } else {
                 println("Введите текст заметки:")
                 while (true) {
-                    val text = Scanner(System.`in`).nextLine()
-                    if (text.isNullOrEmpty()) {
+                    val text = scanner.nextLine().trim()
+                    if (text.isEmpty()) {
                         println("Ввод не должен быть пустым. Введите текст.")
                     } else {
                         archive.notes.add(Note(name, text))
@@ -64,7 +65,7 @@ class Archive(val name: String, val notes: MutableList <Note>) {
                 println("В данный момент заметки в архиве отсутствуют")
                 println("0 - Создать заметку")
                 println("1 - Назад")
-                val inputValue = Scanner(System.`in`).nextLine()
+                val inputValue = scanner.nextLine()
                 if (inputValue.toIntOrNull() == null) {
                     println("Некорректное значение. Необходимо ввести цифру")
 return archive.viewNotes(archive, archiveList)
@@ -86,7 +87,7 @@ return archive.viewNotes(archive, archiveList)
                     println("${i + 1} - ${archive.notes[i].name}")
                 }
                 println("${archive.notes.size + 1} - Назад")
-                val inputValue = Scanner(System.`in`).nextLine()
+                val inputValue = scanner.nextLine()
                 if (inputValue.toIntOrNull() == null) {
                     println("Некорректное значение. Необходимо ввести цифру")
                 } else {

@@ -3,11 +3,12 @@ import kotlin.system.exitProcess
 
 class Menu(val archiveList: MutableList<Archive>) {
 
+    val scanner = Scanner(System.`in`)
     fun createObject() {
         println("Введите название архива:")
         while (true) {
-            val name = Scanner(System.`in`).nextLine()
-            if (name.isNullOrEmpty()) {
+            val name = scanner.nextLine().trim()
+            if (name.isEmpty()) {
                 println("Неверный ввод. Пожалуйста введите название архива снова.")
             } else {
                 archiveList.add(Archive(name, mutableListOf()))
@@ -19,7 +20,7 @@ class Menu(val archiveList: MutableList<Archive>) {
     fun runMenu() {
          while (true) {
              viewArchive(archiveList)
-             val text = Scanner(System.`in`).nextLine()
+             val text = scanner.nextLine()
              if (text.toIntOrNull() == null) {
                  println("Неверный ввод. Необходимо ввести цифру")
              } else {
