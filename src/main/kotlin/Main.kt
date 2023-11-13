@@ -1,8 +1,3 @@
-
-
-fun main() {
-    val archiveList = mutableListOf<Archive>()
-    val menu = Menu(archiveList)
-    println("Добро пожаловать в приложение Заметки\n")
-    menu.runMenu()
-   }
+fun main(args: Array<String>) {
+    println("Hello World!")
+}
